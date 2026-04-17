@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>简历模板</title>
+  <style>
+    :root{
+      --ink:#1f2937;
+      --sub:#4b5563;
+      --muted:#6b7280;
+      --line:#d8dde3;
+      --panel:#f8fafc;
+      --accent:#334155;
+    }
+
+    *{ box-sizing:border-box; }
+
+    html,body{
+      margin:0;
+      padding:0;
+      background:#e5e7eb;
+      font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+      color:var(--ink);
+    }
+
+    .toolbar{
+      width:100%;
+      padding:14px 0;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(229,231,235,.94);
+      backdrop-filter:blur(6px);
+      border-bottom:1px solid rgba(0,0,0,.05);
+    }
+
+    .toolbar button{
+      border:1px solid #cbd5e1;
+      background:#fff;
+      color:#334155;
+      padding:9px 14px;
+      border-radius:8px;
+      font-size:14px;
+      cursor:pointer;
+    }
+
+    .toolbar button:hover{
+      background:#f8fafc;
+    }
+
+    .page-wrap{
+      padding:18px 0 28px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .resume{
+      width:210mm;
+      height:297mm;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:0 10px 35px rgba(15,23,42,.10);
+      padding:9.6mm 13mm 9mm;
+    }
+
+    .header{
+      display:grid;
+      grid-template-columns:1fr 30mm;
+      gap:8mm;
+      align-items:start;
+      padding-bottom:3.6mm;
+      border-bottom:1px solid var(--line);
+    }
+
+    .name{
+      margin:0 0 3px 0;
+      font-size:25px;
+      font-weight:700;
+      color:#111827;
+      letter-spacing:.3px;
+    }
+
+    .target{
+      display:inline-block;
+      margin-bottom:6px;
+      font-size:11.7px;
+      color:#fff;
+      background:var(--accent);
+      padding:4px 9px;
+      border-radius:999px;
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:2px 14px;
+      font-size:11.5px;
+      line-height:1.4;
+      color:var(--sub);
+    }
+
+    .summary-in-header{
+      margin-top:6px;
+      font-size:10.95px;
+      line-height:1.5;
+      color:#374151;
+      background:var(--panel);
+      border:1px solid #e7ebef;
+      border-radius:6px;
+      padding:7px 9px;
+    }
+
+    .photo{
+      width:30mm;
+      height:40mm;
+      border:1px solid #d9dee5;
+      border-radius:6px;
+      overflow:hidden;
+      background:#f3f4f6;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#9ca3af;
+      font-size:12px;
+    }
+
+    .section{
+      margin-top:3.2mm;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      margin:0 0 2mm 0;
+      font-size:12.45px;
+      font-weight:700;
+      color:#111827;
+    }
+
+    .section-title::before{
+      content:"";
+      width:3px;
+      height:12px;
+      border-radius:2px;
+      background:var(--accent);
+      display:inline-block;
+    }
+
+    .block{
+      margin-bottom:2.2mm;
+    }
+
+    .row{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+      margin-bottom:1px;
+    }
+
+    .org{
+      font-size:11.85px;
+      font-weight:700;
+      color:#111827;
+    }
+
+    .meta{
+      font-size:10.55px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    ul{
+      margin:0;
+      padding-left:15px;
+    }
+
+    li{
+      font-size:10.75px;
+      line-height:1.42;
+      color:#374151;
+      margin-bottom:1px;
+    }
+
+    .ability-box{
+      border:1px solid #e6ebf0;
+      background:#fbfcfd;
+      border-radius:6px;
+      padding:7px 9px;
+    }
+
+    .ability-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:6px 12px;
+    }
+
+    .ability-label{
+      font-size:10.95px;
+      font-weight:700;
+      color:#1f2937;
+      margin-bottom:1px;
+    }
+
+    .ability-text{
+      font-size:10.65px;
+      line-height:1.42;
+      color:#4b5563;
+    }
+
+    @media print{
+      html,body{
+        background:#fff;
+      }
+
+      .toolbar{
+        display:none !important;
+      }
+
+      .page-wrap{
+        padding:0;
+      }
+
+      .resume{
+        width:210mm;
+        height:297mm;
+        box-shadow:none;
+        margin:0;
+        padding:9.6mm 13mm 9mm;
+      }
+
+      @page{
+        size:A4;
+        margin:0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button onclick="window.print()">打印 / 导出 PDF</button>
+    <button onclick="toggleZoom()">切换预览比例</button>
+  </div>
+
+  <div class="page-wrap">
+    <div class="resume" id="resume">
+      <div class="header">
+        <div>
+          <h1 class="name">姓名</h1>
+          <div class="target">求职意向：岗位名称</div>
+          <div class="contact">
+            <div>电话：138-XXXX-XXXX</div>
+            <div>邮箱：name@example.com</div>
+            <div>意向城市：城市 / 地区</div>
+            <div>语言能力：等级 / 证书</div>
+          </div>
+          <div class="summary-in-header">
+            请在此处填写 summary，建议用 2–4 行简要概括教育背景、相关经历、核心能力以及与目标岗位的匹配度。
+          </div>
+        </div>
+
+        <div class="photo">照片</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">教育经历</div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">学校名称｜专业名称 硕士</div>
+            <div class="meta">YYYY.MM – YYYY.MM</div>
+          </div>
+          <ul>
+            <li>填写主要课程、研究方向、交换经历、奖项荣誉、绩点表现或其他与目标岗位相关的学术亮点。</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">学校名称｜专业名称 本科</div>
+            <div class="meta">YYYY.MM – YYYY.MM</div>
+          </div>
+          <ul>
+            <li>填写专业基础、核心课程、项目训练、跨学科学习经历或其他与岗位相关的教育信息。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">实习经历</div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">xxx公司｜岗位名称</div>
+            <div class="meta">YYYY.MM – YYYY.MM</div>
+          </div>
+          <ul>
+            <li>填写日常工作内容，如运营支持、排班协助、活动执行、客户沟通、流程跟进或现场协调等。</li>
+            <li>说明你具体负责的事项，以及在任务推进、问题解决、团队协同或执行落地中的作用。</li>
+            <li>可加入量化结果，如处理规模、客户数量、活动效果、效率提升、营收增长或其他成果。</li>
+            <li>突出通过该经历形成的可迁移能力，如执行力、沟通能力、应变能力、协作能力或责任意识。</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">xxx公司｜岗位名称</div>
+            <div class="meta">YYYY.MM – YYYY.MM</div>
+          </div>
+          <ul>
+            <li>填写调研分析、实验支持、产品研究、数据整理、报表输出、质量跟进或业务协同等内容。</li>
+            <li>说明使用过的工具、方法或工作方式，如 Excel、问卷、图表分析、实验记录、PPT 或基础统计分析。</li>
+            <li>总结你的工作结果，例如形成分析报告、支持判断、提出优化建议或协助推动流程改进。</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">xxx公司｜岗位名称</div>
+            <div class="meta">YYYY.MM – YYYY.MM</div>
+          </div>
+          <ul>
+            <li>填写现场执行、服务支持、内容制作、客户接待、流程配合或其他偏实践型的工作内容。</li>
+            <li>如适用，可补充服务对象数量、项目参与次数、活动场次、作品产出或其他量化信息。</li>
+            <li>突出这段经历体现出的综合能力，如细节把控、服务意识、节奏适应、执行效率或团队配合。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">项目经历</div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">项目名称｜项目角色</div>
+            <div class="meta">YYYY.MM – YYYY.MM</div>
+          </div>
+          <ul>
+            <li>填写项目背景、项目目标、你的角色定位，以及在项目规划、组织、研究或执行中的主要职责。</li>
+            <li>说明项目中采用的方法、研究设计、数据分析、实验执行、答辩展示或汇报输出情况。</li>
+            <li>如有奖项、论文、专利、竞赛结果、研究成果或业务结论，可在此补充展示。</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">项目名称｜项目角色</div>
+            <div class="meta">YYYY.MM – YYYY.MM</div>
+          </div>
+          <ul>
+            <li>填写你在团队中的具体工作，例如环境搭建、资料整理、数据录入、测试执行、分析支持或成果整理。</li>
+            <li>体现你如何与团队配合，以及你的工作如何帮助推进项目进度或支持最终结论形成。</li>
+            <li>可加入具体产出形式，如分析报告、模型、专利、论文、展示材料或落地建议。</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">项目名称｜项目角色</div>
+            <div class="meta">YYYY.MM – YYYY.MM</div>
+          </div>
+          <ul>
+            <li>填写项目主题、研究思路、执行过程及你承担的核心工作内容。</li>
+            <li>总结最终成果、实践价值、经验沉淀或该项目带来的能力提升。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">岗位相关技能</div>
+        <div class="ability-box">
+          <div class="ability-grid">
+            <div>
+              <div class="ability-label">数据整理与报表输出</div>
+              <div class="ability-text">填写 Excel、PowerPoint、数据清洗、图表制作、透视分析、汇报材料整理等相关能力。</div>
+            </div>
+            <div>
+              <div class="ability-label">调研与基础分析</div>
+              <div class="ability-text">填写问卷设计、样本收集、市场调研、用户研究、反馈分析或基础统计分析能力。</div>
+            </div>
+            <div>
+              <div class="ability-label">协同与推进</div>
+              <div class="ability-text">填写项目统筹、活动执行、跨部门协作、流程推进、现场协调或沟通对接相关经验。</div>
+            </div>
+            <div>
+              <div class="ability-label">其他</div>
+              <div class="ability-text">填写软件工具、语言能力、证书、技术技能或其他与岗位相关的补充项。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">活动与荣誉</div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">活动 / 荣誉名称｜角色名称</div>
+            <div class="meta">YYYY.MM – YYYY.MM</div>
+          </div>
+          <ul>
+            <li>填写活动组织、学生工作、比赛参与、社团经历、校园实践或获得的荣誉奖项。</li>
+          </ul>
+        </div>
+
+        <div class="block" style="margin-bottom:0;">
+          <div class="row">
+            <div class="org">活动 / 荣誉名称｜角色名称</div>
+            <div class="meta">YYYY.MM – YYYY.MM</div>
+          </div>
+          <ul>
+            <li>填写志愿服务、社区实践、公益经历、社会参与或其他值得展示的补充经历。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let zoomed = false;
+    function toggleZoom(){
+      const el = document.getElementById('resume');
+      if(!zoomed){
+        el.style.transform = 'scale(0.92)';
+        el.style.transformOrigin = 'top center';
+        zoomed = true;
+      }else{
+        el.style.transform = 'scale(1)';
+        zoomed = false;
+      }
+    }
+  </script>
+</body>
+</html>

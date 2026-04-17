@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Template</title>
+  <style>
+    :root{
+      --ink:#111827;
+      --text:#374151;
+      --muted:#6b7280;
+      --line:#d1d5db;
+      --bg:#e5e7eb;
+      --page-pad-y: 6.8mm;
+      --page-pad-x: 8.6mm;
+    }
+
+    *{ box-sizing:border-box; }
+
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:"Times New Roman", Times, serif;
+    }
+
+    .toolbar{
+      width:100%;
+      padding:14px 0;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(229,231,235,.94);
+      backdrop-filter:blur(6px);
+      border-bottom:1px solid rgba(0,0,0,.05);
+    }
+
+    .toolbar button{
+      border:1px solid #cbd5e1;
+      background:#fff;
+      color:#1f2937;
+      padding:9px 14px;
+      border-radius:8px;
+      font-size:14px;
+      cursor:pointer;
+      font-family:"Times New Roman", Times, serif;
+    }
+
+    .toolbar button:hover{
+      background:#f8fafc;
+    }
+
+    .page-wrap{
+      padding:16px 0 24px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .resume{
+      width:210mm;
+      min-height:297mm;
+      background:#fff;
+      box-shadow:0 10px 35px rgba(15,23,42,.10);
+      padding:var(--page-pad-y) var(--page-pad-x);
+    }
+
+    .header{
+      text-align:center;
+      padding-bottom:3.8mm;
+      border-bottom:1px solid var(--line);
+    }
+
+    .name{
+      margin:0;
+      font-size:30px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .contact{
+      margin-top:5px;
+      font-size:11.8px;
+      line-height:1.3;
+      color:var(--text);
+      white-space:nowrap;
+    }
+
+    .contact span{
+      white-space:nowrap;
+    }
+
+    .summary{
+      margin-top:7px;
+      font-size:11.85px;
+      line-height:1.4;
+      color:var(--text);
+      text-align:left;
+    }
+
+    .section{
+      margin-top:3.55mm;
+    }
+
+    .section-title{
+      margin:0 0 1.95mm 0;
+      padding-bottom:1.2px;
+      font-size:13.9px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.45px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .block{
+      margin-bottom:2mm;
+    }
+
+    .row{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:8px;
+      margin-bottom:.7px;
+    }
+
+    .org{
+      font-size:12.8px;
+      font-weight:700;
+      color:var(--ink);
+    }
+
+    .meta{
+      font-size:10.95px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    ul{
+      margin:0;
+      padding-left:17px;
+    }
+
+    li{
+      font-size:11.4px;
+      line-height:1.32;
+      color:var(--text);
+      margin-bottom:.8px;
+    }
+
+    .skills{
+      font-size:11.4px;
+      line-height:1.4;
+      color:var(--text);
+    }
+
+    .skills p{
+      margin:0 0 2.6px 0;
+    }
+
+    .skills p:last-child{
+      margin-bottom:0;
+    }
+
+    @media print{
+      html,body{
+        background:#fff;
+      }
+
+      .toolbar{
+        display:none !important;
+      }
+
+      .page-wrap{
+        padding:0;
+      }
+
+      .resume{
+        width:210mm;
+        min-height:297mm;
+        box-shadow:none;
+        margin:0;
+        padding:var(--page-pad-y) var(--page-pad-x);
+      }
+
+      @page{
+        size:A4;
+        margin:0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button onclick="window.print()">Print / Export PDF</button>
+    <button onclick="toggleZoom()">Toggle Preview Scale</button>
+  </div>
+
+  <div class="page-wrap">
+    <div class="resume" id="resume">
+      <div class="header">
+        <h1 class="name">Name</h1>
+        <div class="contact">
+          <span>Phone: 138-XXXX-XXXX</span> &nbsp;|&nbsp;
+          <span>Email: name@example.com</span> &nbsp;|&nbsp;
+          <span>Preferred Location: City / Region</span> &nbsp;|&nbsp;
+          <span>Language Proficiency: Level / Certificate</span>
+        </div>
+        <div class="summary">
+          Please fill in your summary here. Briefly describe your educational background, relevant internship or project experience, practical strengths, and overall fit for the target role. This section should usually give a concise but informative overview in two to four lines.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Education</h2>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">University Name, Degree Name in Major</div>
+            <div class="meta">MMM YYYY – MMM YYYY</div>
+          </div>
+          <ul>
+            <li>List key coursework, academic focus, international exposure, exchange experience, scholarships, GPA, academic ranking, or other highlights relevant to the target role and industry direction.</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">University Name, Degree Name in Major</div>
+            <div class="meta">MMM YYYY – MMM YYYY</div>
+          </div>
+          <ul>
+            <li>List major-related foundations, technical training, interdisciplinary knowledge, research topics, software exposure, or other academic experience that supports your professional profile.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Internship Experience</h2>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">Company Name | Job Title</div>
+            <div class="meta">MMM YYYY – MMM YYYY</div>
+          </div>
+          <ul>
+            <li>Describe daily responsibilities such as operations support, staff coordination, campaign execution, customer communication, reporting follow-up, task management, or workflow assistance in a fast-paced environment.</li>
+            <li>Explain how you supported team goals through ownership of assigned tasks, process follow-up, communication with stakeholders, on-site execution, issue handling, or service quality maintenance.</li>
+            <li>Include measurable output where relevant, such as campaign scale, number of customers served, growth contribution, efficiency improvement, operational stability, or execution quality achieved.</li>
+            <li>Highlight transferable strengths developed through the role, such as adaptability, communication, responsiveness, collaboration, execution ability, attention to detail, or customer-oriented thinking.</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">Company Name | Job Title</div>
+            <div class="meta">MMM YYYY – MMM YYYY</div>
+          </div>
+          <ul>
+            <li>Describe research, testing, analysis, product support, business-facing coordination, data collection, result tracking, or reporting tasks completed during the internship period.</li>
+            <li>Indicate tools, methods, or working approaches used, such as Excel, surveys, experiments, visualization, dashboards, internal documentation, or presentation materials for reporting purposes.</li>
+            <li>Summarize the value of your contribution, such as supporting decision-making, organizing large amounts of information, identifying issues, proposing improvements, or assisting optimization discussions.</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">Company Name | Job Title</div>
+            <div class="meta">MMM YYYY – MMM YYYY</div>
+          </div>
+          <ul>
+            <li>Describe on-site support, workflow coordination, service delivery, customer interaction, content production, process assistance, or execution responsibilities handled in practice-oriented work scenarios.</li>
+            <li>Include workload or output where appropriate, such as number of projects supported, customers served, materials produced, sessions completed, or deliverables handled during the internship.</li>
+            <li>Emphasize the practical capabilities built through the experience, such as ownership, teamwork, service awareness, responsiveness, detail orientation, execution quality, or time-sensitive coordination.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Project Experience</h2>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">Project Name | Project Role</div>
+            <div class="meta">MMM YYYY – MMM YYYY</div>
+          </div>
+          <ul>
+            <li>Describe the project background, objective, research scope, and your primary responsibilities in planning, coordination, implementation, or experimental execution.</li>
+            <li>Explain the methods, tools, analytical framework, data process, experiment design, reporting structure, or presentation preparation involved in the project.</li>
+            <li>List outputs or results such as awards, patents, papers, presentations, recommendations, academic deliverables, competition achievements, or business implications if applicable.</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">Project Name | Project Role</div>
+            <div class="meta">MMM YYYY – MMM YYYY</div>
+          </div>
+          <ul>
+            <li>Describe your specific responsibilities in the team, such as setup, documentation, testing, data collection, data entry, implementation support, result consolidation, or analysis assistance.</li>
+            <li>Show how your work contributed to project progress, team collaboration, problem solving, experimental execution, milestone delivery, or final conclusions.</li>
+            <li>Include concrete outputs where relevant, such as a report, model, prototype, publication, presentation material, evaluation result, or recommendation for application.</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">Project Name | Project Role</div>
+            <div class="meta">MMM YYYY – MMM YYYY</div>
+          </div>
+          <ul>
+            <li>Describe the topic, execution path, work process, and your key responsibilities in planning, implementation, review, or final presentation preparation.</li>
+            <li>Summarize the final output, insights generated, practical value, lessons learned, or capabilities developed through the project experience.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills">
+          <p><strong>Research & Analysis:</strong> Fill in capabilities such as questionnaire design, market research, desk research, user insight analysis, interview support, data cleaning, and basic statistical analysis.</p>
+          <p><strong>Operations & Execution:</strong> Fill in experience such as operations support, campaign execution, event coordination, process follow-up, stakeholder communication, and implementation assistance.</p>
+          <p><strong>Data Handling & Reporting:</strong> Fill in tools and skills such as Excel, PowerPoint, data organization, charting, visualization, dashboard support, presentation preparation, and reporting output.</p>
+          <p><strong>Tools & Languages:</strong> Fill in software, technical tools, language skills, certifications, creative software, office tools, or other role-relevant competencies and supporting abilities.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Activities & Honors</h2>
+
+        <div class="block">
+          <div class="row">
+            <div class="org">Activity / Honor Name | Role</div>
+            <div class="meta">MMM YYYY – MMM YYYY</div>
+          </div>
+          <ul>
+            <li>List leadership experience, event organization, competition participation, student activities, awards received, campus involvement, or other relevant achievements worth highlighting.</li>
+          </ul>
+        </div>
+
+        <div class="block" style="margin-bottom:0;">
+          <div class="row">
+            <div class="org">Activity / Honor Name | Role</div>
+            <div class="meta">MMM YYYY – MMM YYYY</div>
+          </div>
+          <ul>
+            <li>List volunteer service, public-service work, community involvement, social participation, recognition received, or other supplementary experience that reflects values and initiative.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let zoomed = false;
+    function toggleZoom(){
+      const el = document.getElementById('resume');
+      if(!zoomed){
+        el.style.transform = 'scale(0.97)';
+        el.style.transformOrigin = 'top center';
+        zoomed = true;
+      }else{
+        el.style.transform = 'scale(1)';
+        zoomed = false;
+      }
+    }
+  </script>
+</body>
+</html>

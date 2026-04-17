@@ -1,0 +1,45 @@
+Resume Tailor Skill v1.0
+Quick Start / 快速开始
+
+1. Put your files into the correct folders.
+   将文件放入对应文件夹。
+
+   source/    real resume materials
+              真实简历材料，如旧简历、母版简历、项目说明、实习说明、教育信息、技能说明
+
+   templates/ resume templates
+              简历模板，如中文模板、英文模板、HTML 模板
+
+   assets/    photos and visual assets
+              照片和视觉资源，如证件照、头像、图标、logo
+
+2. Open README.md if needed.
+   如有需要，打开 README.md 查看详细说明。
+
+3. Start the task in chat.
+   在对话中发起任务。
+
+   Send the target JD and add extra requirements if needed.
+   发送目标岗位 JD，并按需补充要求。
+
+   Examples / 示例：
+   - Chinese or English output / 输出中文或英文
+   - one-page A4 / 控制在一页 A4
+   - keep or remove photo / 保留或去掉照片
+   - text-only draft first / 先给文案版
+   - HTML review-ready draft / 直接生成 HTML 可审阅成品
+
+4. Use Invocation Prompt Template.md for ready-to-copy prompts.
+   如需直接复制提示词调用模板，请参考 Invocation Prompt Template.md。
+
+Default output / 默认输出
+- HTML review-ready draft 
+  HTML预览文件
+- text-only draft if wording only is requested
+  只有在用户要求时才会输出纯文本
+
+Important / 重要说明
+Use truthful materials only.
+请仅使用真实材料。
+Do not invent or exaggerate resume content.
+请勿虚构或夸大简历内容。

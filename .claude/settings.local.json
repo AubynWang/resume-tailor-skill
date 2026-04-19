@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(resume-tailor)",
+      "WebFetch(domain:minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com)",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}
